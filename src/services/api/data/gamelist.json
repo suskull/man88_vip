@@ -1,0 +1,18 @@
+  {
+  "success": true,
+  "rows": [
+    {
+      "id": 60,
+      "name": "1 phút"
+    },
+    {
+      "id": 180,
+      "name": "3 phút"
+    },
+    {
+      "id": 300,
+      "name": "5 phút"
+    }
+  ],
+  "attrs": []
+}

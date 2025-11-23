@@ -1,0 +1,263 @@
+  {
+  "success": true,
+  "rows": [
+    {
+      "type": "loto",
+      "name": "Bao lô",
+      "children": [
+        {
+          "id": 1,
+          "name": "Lô 2 số",
+          "type": "loto",
+          "guide": "Đánh 2 chữ số cuối trong lô 27 giải. Thắng gấp {{ODDS}} lần, nếu số đó về N lần thì tính kết quả x N lần. Ví dụ: đánh lô 79 - 1 con 1k, Tổng thanh toán: 1k x 27 = 27k. Nếu trong lô có 2 chữ số cuối là 79 thì Tiền thắng: 1k x {{ODDS}} = {{ODDS}}k, nếu có N lần 2 chữ số cuối là 79 thì Tiền thắng là: 1k x {{ODDS}} x N",
+          "rate": 98,
+          "pay_number": 27,
+          "min_amount": 1000,
+          "max_amount": 10000000000,
+          "multi": 1,
+          "code": "loto_2so",
+          "max": 100,
+          "active": 1,
+          "created_at": "2019-08-18 00:40:12",
+          "updated_at": "2019-08-18 00:40:12",
+          "max_number": 0
+        },
+        {
+          "id": 2,
+          "name": "Lô 3 số",
+          "type": "loto",
+          "guide": "Đánh 3 chữ số cuối trong lô 23 giải. Thắng gấp {{ODDS}} lần, nếu số đó về N lần thì tính kết quả x N lần. Ví dụ: đánh lô 789 - 1 con 1k, Tổng thanh toán: 1k x 23 = 23k. Nếu trong lô có 3 chữ số cuối là 789 thì Tiền thắng: 1k x {{ODDS}} = {{ODDS}}k, nếu có N lần 3 chữ số cuối là 789 thì Tiền thắng là: 1k x {{ODDS}} x N",
+          "rate": 980,
+          "pay_number": 23,
+          "min_amount": 1000,
+          "max_amount": 10000000000,
+          "multi": 1,
+          "code": "loto_3so",
+          "max": 1000,
+          "active": 1,
+          "created_at": "2019-08-18 00:40:12",
+          "updated_at": "2019-08-18 00:40:12",
+          "max_number": 0
+        }
+      ]
+    },
+    {
+      "type": "loxien",
+      "name": "Lô xiên",
+      "children": [
+        {
+          "id": 3,
+          "name": "Xiên 2",
+          "type": "loxien",
+          "guide": "Xiên 2 của 2 chữ số cuối trong lô 27 giải. Thắng gấp {{ODDS}} lần. Ví dụ : đánh 1k cho xiên 11+13, Tổng thanh toán: 1k. Nếu trong lô có \"2 chữ số cuối là 11 và 2 chữ số cuối là 13\" thì Tiền thắng: 1k x {{ODDS}} = {{ODDS}}k",
+          "rate": 16.87,
+          "pay_number": 1,
+          "min_amount": 1000,
+          "max_amount": 10000000000,
+          "multi": 0,
+          "code": "loxien_2so",
+          "max": 100,
+          "active": 1,
+          "created_at": "2019-08-18 00:40:12",
+          "updated_at": "2019-08-18 00:40:12",
+          "max_number": 2
+        },
+        {
+          "id": 4,
+          "name": "Xiên 3",
+          "type": "loxien",
+          "guide": "Xiên 3 của 2 chữ số cuối trong lô 27 giải. Thắng gấp {{ODDS}} lần. Ví dụ : đánh 1k cho xiên 11+13+15, Tổng thanh toán: 1k. Nếu trong lô có 2 chữ số cuối là 11,13,15 thì Tiền thắng: 1k x {{ODDS}} = {{ODDS}}k",
+          "rate": 67.23,
+          "pay_number": 1,
+          "min_amount": 1000,
+          "max_amount": 10000000000,
+          "multi": 0,
+          "code": "loxien_3so",
+          "max": 100,
+          "active": 1,
+          "created_at": "2019-08-18 00:40:12",
+          "updated_at": "2019-08-18 00:40:12",
+          "max_number": 3
+        },
+        {
+          "id": 5,
+          "name": "Xiên 4",
+          "type": "loxien",
+          "guide": "Xiên 4 của 2 chữ số cuối trong lô 27 giải. Thắng gấp {{ODDS}} lần. Ví dụ : đánh 1k cho xiên 11+13+15+20, Tổng thanh toán: 1k. Nếu trong lô có 2 chữ số cuối là 11,13,15,20 thì Tiền thắng: 1k x {{ODDS}} = {{ODDS}}k",
+          "rate": 261,
+          "pay_number": 1,
+          "min_amount": 1000,
+          "max_amount": 10000000000,
+          "multi": 0,
+          "code": "loxien_4so",
+          "max": 100,
+          "active": 1,
+          "created_at": "2019-08-18 00:40:12",
+          "updated_at": "2019-08-18 00:40:12",
+          "max_number": 4
+        }
+      ]
+    },
+    {
+      "type": "dauduoi",
+      "name": "Đầu đuôi",
+      "children": [
+        {
+          "id": 6,
+          "name": "Đầu",
+          "type": "dauduoi",
+          "guide": "Đánh 1 chữ số ở hàng chục của giải ĐB. Thắng gấp {{ODDS}} lần. Ví dụ: đánh 1k cho số 7. Tổng thanh toán: 1K. Nếu giải ĐB là xxx7x thì Tiền thắng: 1k x {{ODDS}} = {{ODDS}}k",
+          "rate": 9.5,
+          "pay_number": 1,
+          "min_amount": 1000,
+          "max_amount": 10000000000,
+          "multi": 1,
+          "code": "dauduoi_dau",
+          "max": 10,
+          "active": 1,
+          "created_at": "2019-08-18 00:40:12",
+          "updated_at": "2019-08-18 00:40:12",
+          "max_number": 0
+        },
+        {
+          "id": 7,
+          "name": "Đuôi",
+          "type": "dauduoi",
+          "guide": "Đánh 1 chữ số cuối của giải ĐB. Thắng gấp {{ODDS}} lần. Ví dụ: đánh 1k cho số 7. Tổng thanh toán: 1K. Nếu giải ĐB là xxxx7 thì Tiền thắng: 1k x {{ODDS}} = {{ODDS}}k",
+          "rate": 9.5,
+          "pay_number": 1,
+          "min_amount": 1000,
+          "max_amount": 10000000000,
+          "multi": 1,
+          "code": "dauduoi_duoi",
+          "max": 10,
+          "active": 1,
+          "created_at": "2019-08-18 00:40:12",
+          "updated_at": "2019-08-18 00:40:12",
+          "max_number": 0
+        }
+      ]
+    },
+    {
+      "type": "de",
+      "name": "Đánh đề",
+      "children": [
+        {
+          "id": 8,
+          "name": "Đề đầu",
+          "type": "de",
+          "guide": "Đánh lô giải 7 ( có 4 giải, thanh toán đủ ). Thắng gấp {{ODDS}} lần. Ví dụ : đánh 1k cho số 79, Tổng thanh toán: 1k x 4 =4k. Nếu trong lô giải 7 có 1 số 79 thì Tiền thắng: 1k x {{ODDS}} = {{ODDS}}k.",
+          "rate": 98,
+          "pay_number": 4,
+          "min_amount": 1000,
+          "max_amount": 10000000000,
+          "multi": 1,
+          "code": "de_dau",
+          "max": 100,
+          "active": 1,
+          "created_at": "2019-08-18 00:40:12",
+          "updated_at": "2019-08-18 00:40:12",
+          "max_number": 0
+        },
+        {
+          "id": 9,
+          "name": "Đề đặc biệt",
+          "type": "de",
+          "guide": "Đánh 2 chữ số cuối trong giải ĐB. Thắng gấp {{ODDS}} lần. Ví dụ: đánh 1k cho số 79. Tổng thanh toán: 1k. Nếu giải ĐB là xxx79 thì Tiền thắng: 1k x {{ODDS}} = {{ODDS}}k",
+          "rate": 98,
+          "pay_number": 1,
+          "min_amount": 1000,
+          "max_amount": 10000000000,
+          "multi": 1,
+          "code": "de_dacbiet",
+          "max": 100,
+          "active": 1,
+          "created_at": "2019-08-18 00:40:12",
+          "updated_at": "2019-08-18 00:40:12",
+          "max_number": 0
+        }
+      ]
+    },
+    {
+      "type": "3cang",
+      "name": "3 càng",
+      "children": [
+        {
+          "id": 10,
+          "name": "3 càng",
+          "type": "3cang",
+          "guide": "Đánh 3 chữ số cuối của giải ĐB. Thắng gấp {{ODDS}} lần. Ví dụ: đánh 1k cho số 879, Tổng thanh toán: 1k. Nếu giải ĐB là xx879 thì Tiền thắng: 1k x {{ODDS}} = {{ODDS}}K",
+          "rate": 980,
+          "pay_number": 1,
+          "min_amount": 1000,
+          "max_amount": 10000000000,
+          "multi": 1,
+          "code": "3cang",
+          "max": 1000,
+          "active": 1,
+          "created_at": "2019-08-18 00:40:12",
+          "updated_at": "2019-08-18 00:40:12",
+          "max_number": 0
+        }
+      ]
+    },
+    {
+      "type": "lotruot",
+      "name": "Lô trượt",
+      "children": [
+        {
+          "id": 11,
+          "name": "Trượt xiên 4",
+          "type": "lotruot",
+          "guide": "Trượt Xiên 4 của 2 chữ số cuối trong lô 27 giải. Thắng gấp {{ODDS}} lần. Ví dụ: đánh 1k cho trượt xiên 11+13+15+20. Tổng thanh toán: 1k. Nếu trong lô không có 2 chữ số cuối là 11,13,15,20 thì Tiền thắng: 1k x {{ODDS}} = {{ODDS}}k",
+          "rate": 2.95,
+          "pay_number": 1,
+          "min_amount": 1000,
+          "max_amount": 10000000000,
+          "multi": 0,
+          "code": "lotruot4",
+          "max": 100,
+          "active": 1,
+          "created_at": "2019-08-18 00:40:12",
+          "updated_at": "2019-08-18 00:40:12",
+          "max_number": 4
+        },
+        {
+          "id": 12,
+          "name": "Trượt xiên 8",
+          "type": "lotruot",
+          "guide": "Trượt Xiên 8 của 2 chữ số cuối trong lô 27 giải. Thắng gấp {{ODDS}} lần. Ví dụ: đánh 1k cho trượt xiên 11+13+15+20+30+40+50+60. Tổng thanh toán: 1k. Nếu trong lô không có 2 chữ số cuối là 11,13,15,20,30,40,50,60 thì Tiền thắng: 1k x {{ODDS}} = {{ODDS}}k",
+          "rate": 9.31,
+          "pay_number": 1,
+          "min_amount": 1000,
+          "max_amount": 10000000000,
+          "multi": 0,
+          "code": "lotruot8",
+          "max": 100,
+          "active": 1,
+          "created_at": "2019-08-18 00:40:12",
+          "updated_at": "2019-08-18 00:40:12",
+          "max_number": 8
+        },
+        {
+          "id": 13,
+          "name": "Trượt xiên 10",
+          "type": "lotruot",
+          "guide": "Trượt Xiên 10 của 2 chữ số cuối trong lô 27 giải. Thắng gấp {{ODDS}} lần. Ví dụ: đánh 1k cho trượt xiên 11+13+15+20+30+40+50+60+62+72. Tổng thanh toán: 1k. Nếu trong lô không có 2 chữ số cuối là 11,13,15,20,30,40,50,60,62,72 thì Tiền thắng: 1k x {{ODDS}} = {{ODDS}}k",
+          "rate": 16.85,
+          "pay_number": 1,
+          "min_amount": 1000,
+          "max_amount": 10000000000,
+          "multi": 0,
+          "code": "lotruot10",
+          "max": 100,
+          "active": 1,
+          "created_at": "2019-08-18 00:40:12",
+          "updated_at": "2019-08-18 00:40:12",
+          "max_number": 10
+        }
+      ]
+    }
+  ],
+  "attrs": []
+}
