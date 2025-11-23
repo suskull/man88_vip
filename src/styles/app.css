@@ -2317,11 +2317,11 @@ body {
  font-size: 13px;
  font-weight: 400;
  color: #fff;
- height: 28px;
  line-height: 28px;
  width: 100%;
  margin-bottom: 20px;
  padding-left: 20px;
+
 }
 
 @media screen and (max-width: 768px) {
@@ -3431,6 +3431,17 @@ p {
  font-size: 20px;
  display: block;
  margin-bottom: 50px
+}
+
+.notify .users span {
+    font-size: 11px;
+    display: block;
+    color: #ffca23;
+}
+
+.notify .users {
+ line-height: 1.5;
+ font-size: 12px
 }
 
 /* ========================================

@@ -101,6 +101,7 @@ function HomePage() {
     <>
       <NotificationBar
         message="Chào mừng đến với hệ thống xổ số trực tuyến"
+        showUserInfo
       />
       {notification && (
         <Notification
