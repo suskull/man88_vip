@@ -13,6 +13,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { glob } from 'glob';
+import postcss from 'postcss';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -50,11 +51,17 @@ const usedClasses = new Set();
 
 files.forEach(file => {
   const content = fs.readFileSync(file, 'utf8');
-  
+
   // Find className="..." and className={...}
   const classNameRegex = /className\s*=\s*["'`]([^"'`]+)["'`]/g;
   const classNameTemplateRegex = /className\s*=\s*\{[^}]*["'`]([^"'`]+)["'`][^}]*\}/g;
-  
+
+  // Also find classes in template literals with ${...}
+  const templateLiteralRegex = /className\s*=\s*\{`([^`]*)`\}/g;
+
+  // Find classes in ternary expressions: className={condition ? 'class1' : 'class2'}
+  const ternaryRegex = /className\s*=\s*\{[^}]*\?\s*["'`]([^"'`]+)["'`]\s*:\s*["'`]([^"'`]+)["'`][^}]*\}/g;
+
   let match;
   while ((match = classNameRegex.exec(content)) !== null) {
     const classes = match[1].split(/\s+/);
@@ -64,10 +71,34 @@ files.forEach(file => {
       }
     });
   }
-  
+
   while ((match = classNameTemplateRegex.exec(content)) !== null) {
     const classes = match[1].split(/\s+/);
     classes.forEach(cls => {
+      if (cls && allClasses.has(cls)) {
+        usedClasses.add(cls);
+      }
+    });
+  }
+
+  while ((match = templateLiteralRegex.exec(content)) !== null) {
+    // Extract static parts from template literal (ignore ${...} parts)
+    const staticParts = match[1].split(/\$\{[^}]+\}/);
+    staticParts.forEach(part => {
+      const classes = part.split(/\s+/);
+      classes.forEach(cls => {
+        if (cls && allClasses.has(cls)) {
+          usedClasses.add(cls);
+        }
+      });
+    });
+  }
+
+  while ((match = ternaryRegex.exec(content)) !== null) {
+    // Extract both sides of ternary
+    const classes1 = match[1].split(/\s+/);
+    const classes2 = match[2].split(/\s+/);
+    [...classes1, ...classes2].forEach(cls => {
       if (cls && allClasses.has(cls)) {
         usedClasses.add(cls);
       }
@@ -106,21 +137,54 @@ if (process.env.PURGE_CSS !== 'true') {
   process.exit(0);
 }
 
-// Remove unused classes from CSS
-console.log('\n🔧 Removing unused classes...');
+// Remove unused classes from CSS using PostCSS
+console.log('\n🔧 Removing unused classes using PostCSS...');
 
-// Create a regex to match CSS rules for unused classes
-unusedClasses.forEach(cls => {
-  // Match the class and its entire rule block
-  const ruleRegex = new RegExp(
-    `\\.${cls.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[^{]*\\{[^}]*\\}`,
-    'g'
-  );
-  css = css.replace(ruleRegex, '');
+// Parse CSS with PostCSS
+const root = postcss.parse(css);
+
+// Walk through all rules and remove unused ones
+root.walkRules(rule => {
+  // Get all selectors for this rule
+  const selectors = rule.selector.split(',').map(s => s.trim());
+
+  // Filter out selectors that only contain unused classes
+  const keptSelectors = selectors.filter(selector => {
+    // Extract class names from this selector
+    const classMatches = selector.match(/\.([a-zA-Z0-9_-]+)/g);
+
+    if (!classMatches) {
+      // Keep selectors without class names (element selectors, IDs, etc.)
+      return true;
+    }
+
+    // Check if any class in this selector is used
+    const hasUsedClass = classMatches.some(classMatch => {
+      const className = classMatch.substring(1); // Remove the dot
+      return usedClasses.has(className);
+    });
+
+    return hasUsedClass;
+  });
+
+  if (keptSelectors.length === 0) {
+    // Remove the entire rule if no selectors are kept
+    rule.remove();
+  } else if (keptSelectors.length < selectors.length) {
+    // Update the selector list if some were removed
+    rule.selector = keptSelectors.join(', ');
+  }
 });
 
-// Clean up empty lines
-css = css.replace(/\n\s*\n\s*\n/g, '\n\n');
+// Remove empty at-rules (media queries, etc.)
+root.walkAtRules(atRule => {
+  if (atRule.nodes && atRule.nodes.length === 0) {
+    atRule.remove();
+  }
+});
+
+// Convert back to string
+css = root.toString();
 
 // Write the purged CSS
 const backupFile = CSS_FILE.replace('.css', '.backup.css');

@@ -48,7 +48,7 @@ export const NotificationBar = ({
           // Desktop layout with notification message
           <>
             <div className="col-8">
-              {message}
+              <i className="fas fa-bullhorn text-warning"></i>{message}
             </div>
             <div className="col-4 text-right">
               <Link to="/" className="text-warning">

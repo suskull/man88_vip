@@ -135,7 +135,7 @@ export const NumberGrid = ({
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((colIndex) => (
             <td key={colIndex} className="tdscol">
               <a
-                className="s-col"
+                className={`s-col ${activeRange === colIndex ? 'active' : ''}`}
                 href="#"
                 onClick={(e) => handleColumnClick(e, colIndex)}
               >
